@@ -1,0 +1,62 @@
+#:kivy 1.10.0
+#:import slidersview slidersview
+
+<SlidersView>:
+    percent_slider: percent_slider
+    percent_toggle: percent_toggle
+    percent_label: percent_label
+    kb_slider: kb_slider
+    kb_toggle: kb_toggle
+    kb_label: kb_label
+
+    BoxLayout:
+        size_hint: 1, .5
+        pos_hint: {'x':0, 'y': .5}
+        
+        CheckBox:
+            size_hint: .1, 1
+            id: percent_toggle
+            group: 'compress_mode'
+            allow_no_selection: False
+
+        Slider:
+            size_hint: .8, 1
+            id: percent_slider
+            value_track_color: 1,1,1,1
+            background_width: 20
+            cursor_size: 15, 15
+            min: 1
+            max: 90
+            value: 50
+            desc: '%'
+
+        Label:
+            size_hint: .1, 1
+            id: percent_label
+            text: str(int(percent_slider.value)) + ' %'
+
+    BoxLayout:
+        size_hint: 1, .5
+        pos_hint: {'x':0, 'y': 0}
+
+        CheckBox:
+            size_hint: .1, 1
+            id: kb_toggle
+            group: 'compress_mode'
+            allow_no_selection: False
+
+        Slider:
+            size_hint: .8, 1
+            id: kb_slider
+            value_track_color: 1,1,1,1
+            background_width: 20
+            cursor_size: 15, 15
+            min: 1
+            max: 1000
+            value: 500
+            desc: 'KB'
+
+        Label:
+            size_hint: .1, 1
+            id: kb_label
+            text: str(int(kb_slider.value)) + ' KB'

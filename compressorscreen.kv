@@ -1,0 +1,93 @@
+#:kivy 1.10.0
+#:import compressorscreen compressorscreen 
+
+<OutputSelect>
+    color: .8,.26,.27,1
+    text: 'Select'
+
+<ClearSelectedImages>
+    color: .8,.26,.27,1
+    text: 'Clear'
+
+<CompressorScreen>:
+    name: 'compressor'
+    id: compressor_screen
+
+    canvas:
+        Clear
+        Color: 
+            rgb: 1, 1, 1
+        Rectangle:
+            pos: 0,0
+            size: self.width, self.height
+
+    FloatLayout:
+    
+        DragDropView:
+            size_hint: 1, .40
+            pos_hint: {'x':0, 'y': .60}
+            compressor_screen: compressor_screen
+
+        RelativeLayout:
+            size_hint: 1, .55
+            pos_hint: {'x':0, 'y': 0}
+
+            canvas:
+                Clear
+                Color: 
+                    rgb: .16, .17, .18
+                Rectangle:
+                    pos: 0,0
+                    size: self.width, self.height
+
+            RelativeLayout:
+                size_hint: .9, .1
+                pos_hint: {'center_x':.5, 'y': .8}
+
+                BoxLayout:
+                    size_hint: 1, 1
+                    Label:
+                        size_hint: .9, 1
+                        markup: True
+                        shorten: True
+                        shorten_from: 'right'
+                        max_lines: 1
+                        text_size: self.width, None
+                        ellipsis_options: {'color':(1,1,1,1)}
+                        text: 'Files added for compression: ' + str(len(root.manager.files))
+                    ClearSelectedImages:
+                        size_hint: .1, 1
+                        compressor_screen: compressor_screen
+
+            RelativeLayout:
+                size_hint: .9, .1
+                pos_hint: {'center_x':.5, 'y': .7}
+
+                BoxLayout:
+                    size_hint: 1, 1
+                    Label:
+                        size_hint: .9, 1
+                        markup: True
+                        shorten: True
+                        shorten_from: 'right'
+                        max_lines: 1
+                        text_size: self.width, None
+                        ellipsis_options: {'color':(1,1,1,1)}
+                        text: 'Output folder: ' + str(root.manager.out_put_directory)
+                    OutputSelect:
+                        size_hint: .1, 1
+                        compressor_screen: compressor_screen
+
+            SlidersView:
+                size_hint: .9, .3
+                pos_hint: {'center_x':.5, 'y': .35}
+                compressor_screen: compressor_screen
+
+            Button:
+                size_hint: .9, .2
+                pos_hint: {'center_x':.5, 'y': .1}
+                text: 'Compress Images'
+                disabled: not (root.manager.out_put_directory_selected and len(root.manager.files) > 0)
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'details'

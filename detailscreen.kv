@@ -1,0 +1,78 @@
+#:kivy 1.10.0
+#:import detailscreen detailscreen
+
+<DetailScreen>:
+    name: 'details'
+    id: details_screen
+    details_output: details_output
+
+    FloatLayout:
+        canvas:
+            Clear
+            Color: 
+                rgb: 1, 1, 1
+            Rectangle:
+                pos: 0,0
+                size: self.width, self.height
+
+        ScrollView:
+            size_hint: 1, .9
+            pos_hint: {'x':0, 'y': .1}
+            id: scroll_view
+
+            RelativeLayout:
+                size_hint: 1, 1
+                pos_hint: {'x':0, 'y': 0}
+                id: details_output
+                fcolor: 1, 1, 1, 1
+                bcolor: .16, .17, .18
+
+                BoxLayout:
+                    size_hint: 1, .05
+                    pos_hint: {'x':0, 'y': .95}
+                    padding:10
+                    spacing:5
+
+                    canvas:
+                        Clear
+                        Color: 
+                            rgb: details_output.bcolor
+                        Rectangle:
+                            pos: self.pos
+                            size: self.width, self.height
+
+                    Label:  
+                        size_hint: .19, 1
+                        text: 'Status'
+                        markup: True
+                        shorten: True
+                        shorten_from: 'right'
+                        max_lines: 1
+                        text_size: self.width, None
+                        ellipsis_options: {'color':(1,1,1,1)}
+                        color: details_output.fcolor
+
+                    Label:  
+                        size_hint: .02, 1
+                        text: '|'
+                        color: details_output.fcolor
+
+                    Label:
+                        size_hint: .79, 1
+                        text: 'Output'
+                        markup: True
+                        shorten: True
+                        shorten_from: 'right'
+                        max_lines: 1
+                        text_size: self.width, None
+                        ellipsis_options: {'color':(1,1,1,1)}
+                        color: details_output.fcolor
+
+        Button:
+            size_hint: 1, .1
+            pos_hint: {'center_x':.5, 'y': 0}
+            text: 'done'
+            disabled: not (root.process_complete)
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'compressor'
