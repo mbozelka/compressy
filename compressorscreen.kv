@@ -1,11 +1,11 @@
 #:kivy 1.10.0
 #:import compressorscreen compressorscreen 
 
-<OutputSelect>
+<OutputSelect>:
     color: .8,.26,.27,1
     text: 'Select'
 
-<ClearSelectedImages>
+<ClearSelectedImages>:
     color: .8,.26,.27,1
     text: 'Clear'
 
@@ -90,4 +90,4 @@
                 disabled: not (root.manager.out_put_directory_selected and len(root.manager.files) > 0)
                 on_press:
                     root.manager.transition.direction = 'left'
-                    root.manager.current = 'details'
+                    root.manager.current = 'compression-details'

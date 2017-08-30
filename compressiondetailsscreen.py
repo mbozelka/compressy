@@ -9,19 +9,17 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
 from kivy.properties import BooleanProperty
-
-
 from imagecompressthread import ImageCompressThread
 
-class DetailScreen(Screen):
-    
+class CompressionDetailsScreen(Screen):
+
     clean_up_thread_count = 0
     process_complete = BooleanProperty(False)
     details_output = ObjectProperty(None)
     ui_list = []
 
     def __init__(self, **kwargs):
-        super(DetailScreen, self).__init__(**kwargs)
+        super(CompressionDetailsScreen, self).__init__(**kwargs)
         Window.bind(on_resize=self._update_ui)
         
     def on_enter(self):

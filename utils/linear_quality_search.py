@@ -8,7 +8,7 @@ from utils.compress_image import compress_image
 
 
 def linear_quality_search(image_path, output_dir, target_val, subsampling=1, image_format='JPEG'):
-    
+
     random_hash = random.randint(100000, 600001)
     temp_dir = os.path.abspath(output_dir) + '/_temp_' + str(random_hash)
     best_quality = -1

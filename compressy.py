@@ -20,10 +20,11 @@ from utils.defaultmessagesenum import DEFAULT_MESSAGES
 
 Builder.load_file('appscreenmanager.kv')
 Builder.load_file('compressorscreen.kv')
+#Builder.load_file('detailscreen.kv')
 Builder.load_file('folderselectorscreen.kv')
-Builder.load_file('detailscreen.kv')
 Builder.load_file('slidersview.kv')
 Builder.load_file('dragdropview.kv')
+Builder.load_file('compressiondetailsscreen.kv')
 
 
 class AppScreenManager(ScreenManager):
