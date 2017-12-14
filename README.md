@@ -1,2 +1,4 @@
 # compressy
-A GUI Application for compressing images by percent or by kb (under construction)
+A GUI Application for compressing images by percent or by kb
+
+NOTE: This was moved into Compressy2 with wxPython instead of Kivy. At the time building the OSX built tool support was broken and not being worked on.
