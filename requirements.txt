@@ -14,7 +14,7 @@ Pillow==4.2.1
 ptyprocess==0.5.2
 Pygments==2.2.0
 PyInstaller==3.2.1
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.3
 sh==1.12.14
 terminal==0.4.0
